@@ -45,8 +45,8 @@
             constructor(){
                 const Recoginetion = window.SpeecheRecognition || window.webkitSpeechRecognition 
                 this.api = new Recoginetion();
-                thais.api.continuos = true 
-                thais.api.lang = "pt-BR"
+                this.api.continuos = true 
+                this.api.lang = "pt-BR"
                 this.api.onresult = e=> Resultado.textContent += e.result[ e.resultIndex][0].transcript
             }
             start(){
