@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconhecimento de voz</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        .conteiner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; 
+            height: 80vh;
+
+        }
+        .Quadrado{
+            background-color: white;
+            width: 50%;
+            height: 30vh;
+            text-align: center;
+            font-size: 23pt;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="conteiner">
+        <div class="Quadrado">O rato roeu a roupa do rei de roma</div>
+        
+        <div class="Quadrado" id="Resultado">
+
+        </div>
+    </div>
+    <div class="btn">
+        <button onclick="fala.start()">Gravar</button>
+        <button onclick="fala.stop()">Parar</button>
+    </div>
+    <script>
+        var Resultado = document.getElementById('Resultado')
+       
+        class SpeechApi{
+            constructor(){
+                const Recoginetion = window.SpeecheRecognition || window.webkitSpeechRecognition 
+                this.api = new Recoginetion();
+                thais.api.continuos = true 
+                thais.api.lang = "pt-BR"
+                this.api.onresult = e=> Resultado.textContent += e.result[ e.resultIndex][0].transcript
+            }
+            start(){
+                this.api.start();
+
+            }
+            stop(){
+                this.api.stop();
+            }
+        }
+        const fala = new SpeechApi();
+    </script>
+</body>
+</html>
